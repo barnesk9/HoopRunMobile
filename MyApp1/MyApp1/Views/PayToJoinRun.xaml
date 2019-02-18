@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyApp1.Views.PayToJoinRun">
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical">
+            <Image BackgroundColor="Gray" WidthRequest="100" HeightRequest="100" HorizontalOptions="Center" VerticalOptions="Center" Margin="0,20"></Image>
+            <Entry x:Name="Name" Placeholder="NameOnCard" Margin="10" BackgroundColor="White"></Entry>
+            <Entry x:Name="CardNumber" Placeholder="CardNumber" Margin="10" BackgroundColor="White"></Entry>
+            <Entry x:Name="CVV" Placeholder="CVV" Margin="10" BackgroundColor="White"></Entry>
+            <Entry x:Name="Expiration" Placeholder="EXP" Margin="10" BackgroundColor="White"></Entry>
+            <Entry x:Name="ZipEntry" Placeholder="Zip" Margin="10" BackgroundColor="White"></Entry>
+            <Button x:Name="PayButton" Text="Pay Now" HorizontalOptions="Center" VerticalOptions="End" Clicked="PayButton_OnClicked" BackgroundColor="White"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

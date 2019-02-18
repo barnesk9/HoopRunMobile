@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyApp1.Views.UserLoginPage"
+             Style="{StaticResource ContentPageStyle}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <!--Page Level Resources: Compatibile with Xamarin Live Player -->
+            <Color x:Key="Primary">#1a9114</Color>
+            <Color x:Key="Accent">#96d1ff</Color>
+            <Color x:Key="LightTextColor">#999999</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="3*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Image Grid.Row="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"></Image>
+        <Label Grid.Row="0" x:Name="Label2" Text="{Binding LabelText}"></Label>
+        <StackLayout Grid.Row="1" Orientation="Vertical" >
+            <Entry x:Name="UserNameEntryField" Placeholder="Username" Margin="10" HorizontalOptions="Fill" BackgroundColor="White" TextColor="Green" HeightRequest="80" WidthRequest="100"/>
+            <Entry x:Name="UserPasswordEntryField" IsPassword="True" Margin="10" Placeholder="Password" HorizontalOptions="Fill" BackgroundColor="White" TextColor="Green" HeightRequest="80" WidthRequest="100"/>
+            <StackLayout Orientation="Horizontal" Margin="10">
+                <Button x:Name="JoinButton" Style="{StaticResource SideBySideButtonStyle}" Text="Join" Clicked="OpenCreateAPlayerProfilePage" HeightRequest="20"/>
+                <Button x:Name="LoginButton" Style="{StaticResource SideBySideButtonStyle}" Text="Login" Clicked="Login" HeightRequest="40" />
+            </StackLayout>
+            <Label HorizontalTextAlignment="Center">Join Now With Facebook</Label>
+        </StackLayout>
+    </Grid>
+</ContentPage>

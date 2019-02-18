@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:MyApp1.ViewModels"
+             x:Class="MyApp1.Views.HoopRunStart">
+    <ContentPage.BindingContext>
+        <vm:HoopRunViewModel />
+    </ContentPage.BindingContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Image x:Name="LogoImage" Grid.Row="0"></Image>
+        <Label x:Name="WelcomeText" Grid.Row="0" Text="Hoop Run Beta" Style="{StaticResource NormalTextStyle}"></Label>
+        <StackLayout Grid.Row="1" Margin="20,0,20,40" Orientation="Vertical" VerticalOptions="EndAndExpand">
+            <Button x:Name="HooperButton" Text="Player" Style="{StaticResource HoopRunButtonStyle}" Clicked="OpenAboutPage" />
+            <Button x:Name="GymOwnerButton" Text="Gym Owner" Style="{StaticResource HoopRunButtonStyle}" Clicked="OpenAboutPage" />
+        </StackLayout>
+    </Grid>
+</ContentPage>

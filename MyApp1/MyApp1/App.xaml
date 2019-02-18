@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyApp1.App">
+	<Application.Resources>
+		<ResourceDictionary>
+            <!--Global Styles-->
+            <Color x:Key="NavigationPrimary">#2196F3</Color>
+		    <Color x:Key="Primary">#1a9114</Color>
+		    <Color x:Key="Accent">#96d1ff</Color>
+		    <Color x:Key="LightTextColor">#999999</Color>
+            <Color x:Key="WhiteColor">#FFFFFF</Color>
+            <Style x:Key="NavigationPageStyle" TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor" Value="{StaticResource Primary}" />
+                <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
+                <Setter Property="BarTextColor" Value="White" />
+            </Style>
+            <Style x:Key="ContentPageStyle" TargetType="ContentPage">
+                <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
+            </Style>
+            <Style x:Key="HoopRunButtonStyle" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
+                <Setter Property="Margin" Value="0,10,0,10" />
+                <Setter Property="FontSize" Value ="25" />
+                <Setter Property="BorderColor" Value="White" />
+                <Setter Property="BorderWidth" Value ="2" />
+		        <Setter Property="TextColor" Value ="White" />
+		        <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+		        <Setter Property="HeightRequest" Value="80" />
+		        <Setter Property="WidthRequest" Value ="200" />
+            </Style>
+		    <Style x:Key="SideBySideButtonStyle" TargetType="Button">
+		        <Setter Property="BackgroundColor" Value="{StaticResource Accent}" />
+		        <Setter Property="Margin" Value="0,10,0,10" />
+		        <Setter Property="FontSize" Value ="25" />
+                <Setter Property="BorderColor" Value="{StaticResource WhiteColor}" />
+		        <Setter Property="BorderWidth" Value ="2" />
+		        <Setter Property="TextColor" Value ="White" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+		        <Setter Property="HeightRequest" Value="10" />
+            </Style>
+            <Style x:Key="NormalTextStyle" TargetType="Label">
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="FontSize" Value="80" />
+            </Style>
+        </ResourceDictionary>
+	</Application.Resources>
+</Application>
