@@ -10,9 +10,7 @@
                 <Button x:Name="ListButton" HorizontalOptions="Center" Text="List" BackgroundColor="White" Margin="10,5" Clicked="ChangeView"></Button>
             </StackLayout>
             <Image x:Name="MapView" IsVisible="True"></Image>
-            <ListView x:Name="ListOfRuns" IsVisible="False" ItemSelected="testMethod">
-
-            </ListView>
+            <ListView x:Name="ListOfRuns" IsVisible="False" ItemSelected="testMethod"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -1,53 +1,54 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.Design.Serialization;
 using System.Diagnostics;
-
-using System.Text;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using MyApp1.Models;
 using MyApp1.Services.Interfaces;
-using RestSharp;
-using RestSharp.Authenticators;
-
 
 namespace MyApp1.Services
 {
     class RestService:IRestService
     {
-       // HttpClient client;
+        HttpClient client;
 
         public List<Player> Players { get; private set; }
 
         public RestService()
         {
-            var authData = string.Format("{0}:{1}", "barnesk9", "password");
-            var authHeaderValue = Convert.ToBase64String(Encoding.UTF8.GetBytes(authData));
+            client = new HttpClient();
+            client.MaxResponseContentBufferSize = 256000;
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic");  
+        }
 
-
-            //var response = client.Get(request);
-
-            //client = new HttpClient();
-            //client.MaxResponseContentBufferSize = 256000;
-            //client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", authHeaderValue);
-
+        public async Task<List<Player>> returnPlayerList()
+        {
             var playerlist = RefreshDataAsync();
+
+            return await playerlist;
         }
 
         public async Task<List<Player>> RefreshDataAsync()
         {
+            List<Player> playerList = new List<Player>();
+            var uri = new Uri("https://hooprunapitest.azurewebsites.net/api/players");
 
-            var client = new RestClient("http://hooprunapitest.azurewebsites.net/api/")
+            try
             {
-                //Authenticator = new HttpBasicAuthenticator("username", "password")
-            };
+                var response = await client.GetAsync(uri);
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    playerList = JsonConvert.DeserializeObject<List<Player>>(content);
+                }
+            }
 
-            var request = new RestRequest("players", Method.GET);
-
-            var response = client.Execute(request);
-            
-            List<Player> playerList = JsonConvert.DeserializeObject<List<Player>>(response.Content);
+            catch (Exception ex)
+            {
+                Debug.WriteLine(@"				ERROR {0}", ex.Message);
+            }
 
             return playerList;
         }
