@@ -15,7 +15,7 @@ namespace MyApp1.Views
 	    private bool isListView;
 	    private Image mapView;
 
-        List<Player> playerList;
+        List<Gym> gymList;
 
 		public FindRunMapView ()
 		{
@@ -25,57 +25,55 @@ namespace MyApp1.Views
 		    MapView.Source = "c:/temp/hooprunLogo.PNG";
 		}
 
-	    public async void ChangeView(object sender, EventArgs e)
+	    public void ChangeView(object sender, EventArgs e)
 	    {
             //Map View Is Visible, change to list
 	        if (isMapView)
 	        {
-                MapView.IsVisible = false;
-	            ListOfRuns.IsVisible = true;
-	            MapButton.BackgroundColor = Color.White;
-	            ListButton.BackgroundColor = Color.Orange;
-                isListView = true;
-	            isMapView = false;
-                ListOfRuns.ItemsSource = await getPlayers();
+                EnableListView();
             }
             // List view is visible, change to map view
 	       else
 	        {
-	           ListOfRuns.IsVisible = false;
-	           MapButton.BackgroundColor = Color.Orange;
-               ListButton.BackgroundColor = Color.White;
-	           MapView.IsVisible = true;
-	           isListView = false;
-	           isMapView = true;
+                EnableMapView();
            }
 	    }
 
-        private async Task<List<Player>> getPlayers()
+        private void EnableListView()
         {
-            RestService ab = new RestService();
-            playerList = await ab.returnPlayerList();
-
-            return playerList;
+            MapView.IsVisible = false;
+            ListOfRuns.IsVisible = true;
+            MapButton.BackgroundColor = Color.White;
+            ListButton.BackgroundColor = Color.Green;
+            isListView = true;
+            isMapView = false;
+            getGymList();
         }
 
-	    private List<string> createRunList()
+        private void EnableMapView()
+        {
+            ListOfRuns.IsVisible = false;
+            MapButton.BackgroundColor = Color.Green;
+            ListButton.BackgroundColor = Color.White;
+            MapView.IsVisible = true;
+            isListView = false;
+            isMapView = true;
+        }
+
+        private async void getGymList()
+        {
+            RestService ab = new RestService();
+            gymList = await ab.returnGymList();
+
+            ListOfRuns.ItemsSource = gymList;
+            ListOfRuns.ItemTemplate = new DataTemplate(typeof(TextCell));
+            ListOfRuns.ItemTemplate.SetBinding(TextCell.TextProperty, "Name");
+        }
+
+	    private async void Advance(object sender, SelectedItemChangedEventArgs e)
 	    {
-            var runList = new List<string>();
-	        int i = 0;
-
-	        while (i != 30)
-	        {
-	            runList.Add("test run: " + i);
-                i++;
-            }
-
-	        return runList;
-	    }
-
-	    private async void testMethod(object sender, SelectedItemChangedEventArgs e)
-	    {
-            //RestService ab = new RestService();
-	        await Navigation.PushModalAsync((new WhoIsRunning()));
+            Gym a = (Gym)e.SelectedItem;
+	        await Navigation.PushModalAsync((new WhoIsRunning((Gym)e.SelectedItem)));
         }
 	}
 }

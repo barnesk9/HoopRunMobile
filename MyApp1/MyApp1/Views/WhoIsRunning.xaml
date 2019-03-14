@@ -8,13 +8,8 @@
             <StackLayout x:Name ="HooperImages" Orientation="Horizontal">
             </StackLayout>
             </ScrollView>
-            <Image HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="400" BackgroundColor="Gray"></Image>
-            <Label>Hoop Run 1</Label>
-            <Label>222 fake street</Label>
-            <Label>Detroit MI, 48000</Label>
-            <Label>Time 8:00 PM Participation fee: $10</Label>
-            <Label>Gender: All</Label>
-            <Label>Directions</Label>
+            <Image x:Name="GymImage" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="300" BackgroundColor="Gray"></Image>
+            <Label x:Name="GymInfo" Text="{Binding Summary}"/>
             <Button Text="Join Run" VerticalOptions="End" HeightRequest="40" Clicked="JoinButtonClicked"></Button>
         </StackLayout>
     </ContentPage.Content>

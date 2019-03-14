@@ -10,7 +10,7 @@ using MyApp1.Services.Interfaces;
 
 namespace MyApp1.Services
 {
-    class RestService:IRestService
+    class RestService
     {
         HttpClient client;
 
@@ -20,20 +20,14 @@ namespace MyApp1.Services
         {
             client = new HttpClient();
             client.MaxResponseContentBufferSize = 256000;
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic");  
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic");
+            client.BaseAddress =  new Uri("https://hooprunapitest.azurewebsites.net/api/players/");
         }
 
         public async Task<List<Player>> returnPlayerList()
         {
-            var playerlist = RefreshDataAsync();
-
-            return await playerlist;
-        }
-
-        public async Task<List<Player>> RefreshDataAsync()
-        {
             List<Player> playerList = new List<Player>();
-            var uri = new Uri("https://hooprunapitest.azurewebsites.net/api/players");
+            var uri = new Uri("https://hooprunapitest.azurewebsites.net/api/players/");
 
             try
             {
@@ -42,20 +36,61 @@ namespace MyApp1.Services
                 {
                     var content = await response.Content.ReadAsStringAsync();
                     playerList = JsonConvert.DeserializeObject<List<Player>>(content);
+                    //playerList.Add(player);
                 }
             }
 
             catch (Exception ex)
             {
-                Debug.WriteLine(@"				ERROR {0}", ex.Message);
+                Debug.WriteLine(@"ERROR {0}", ex.Message);
             }
 
             return playerList;
         }
 
-        public Task GetPlayerAsync(Player player, bool isNewItem)
+        public async Task<List<Gym>> returnGymList()
         {
-            throw new NotImplementedException();
+            List<Gym> gymList = new List<Gym>();
+            var uri = new Uri("https://hooprunapitest.azurewebsites.net/api/gyms/");
+
+            try
+            {
+                var response = await client.GetAsync(uri);
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    gymList = JsonConvert.DeserializeObject<List<Gym>>(content);
+                    //playerList.Add(player);
+                }
+            }
+
+            catch (Exception ex)
+            {
+                Debug.WriteLine(@"ERROR {0}", ex.Message);
+            }
+
+            return gymList;
+        }
+
+        public async Task<bool> AddPlayerAsync(Player player, bool isNewItem)
+        {
+            Player newPlayer = new Player();
+            var uri = new Uri("https://hooprunapitest.azurewebsites.net/api/players");
+            StringContent playerToPost = new StringContent( JsonConvert.SerializeObject(player));
+
+            try
+            {
+                var response = await client.PostAsync(uri, playerToPost);
+                if (response.IsSuccessStatusCode)
+                { return true; }
+            }
+
+            catch (Exception ex)
+            {
+                Debug.WriteLine(@"ERROR {0}", ex.Message);
+            }
+
+            return false;
         }
 
         public Task DeleteTodoItemAsync(string id)

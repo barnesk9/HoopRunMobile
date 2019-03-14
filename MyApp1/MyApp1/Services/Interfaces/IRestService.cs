@@ -6,7 +6,7 @@ namespace MyApp1.Services.Interfaces
 {
     public interface IRestService
     {
-        Task<List<Player>> RefreshDataAsync();
+        Task<List<object>> RefreshDataAsync();
 
         Task GetPlayerAsync(Player player, bool isNewItem);
 

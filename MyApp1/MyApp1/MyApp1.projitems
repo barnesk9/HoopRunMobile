@@ -18,6 +18,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)DemoCustomer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interfaces\IPerson.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Address.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Gym.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Hooper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Item.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\PersonModel.cs" />

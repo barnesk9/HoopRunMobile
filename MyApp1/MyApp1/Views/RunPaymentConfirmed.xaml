@@ -4,7 +4,7 @@
              x:Class="MyApp1.Views.RunPaymentConfirmed">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Congrats. Your payment has been received! You are now eligible to  participate in the hoop run"
+            <Label Text="You are ecurrently in the hoop run"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
         </StackLayout>

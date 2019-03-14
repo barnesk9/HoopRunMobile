@@ -6,11 +6,11 @@
         <StackLayout Orientation="Vertical">
             <Entry Placeholder="Search Runs" Margin="10"></Entry>
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                <Button x:Name="MapButton" HorizontalOptions="Center" Text="Map" BackgroundColor="Orange" Margin="10,5" Clicked="ChangeView"></Button>
+                <Button x:Name="MapButton" HorizontalOptions="Center" Text="Map" BackgroundColor="Green" Margin="10,5" Clicked="ChangeView"></Button>
                 <Button x:Name="ListButton" HorizontalOptions="Center" Text="List" BackgroundColor="White" Margin="10,5" Clicked="ChangeView"></Button>
             </StackLayout>
             <Image x:Name="MapView" IsVisible="True"></Image>
-            <ListView x:Name="ListOfRuns" IsVisible="False" ItemSelected="testMethod"/>
+            <ListView x:Name="ListOfRuns" IsVisible="False" ItemSelected="Advance"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

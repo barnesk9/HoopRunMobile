@@ -6,12 +6,10 @@
     <ContentPage.Content>
         <StackLayout Orientation="Vertical">
             <Image BackgroundColor="Gray" WidthRequest="100" HeightRequest="100" HorizontalOptions="Center" VerticalOptions="Center" Margin="0,20"></Image>
+            <Entry x:Name="EmailEntry" Placeholder="Email" Margin="10" BackgroundColor="White"></Entry>
+            <Entry x:Name="PasswordEntry" Placeholder="Password" Margin="10" BackgroundColor="White"></Entry>
             <Entry x:Name="FirstNameEntry" Placeholder="First Name" Margin="10" BackgroundColor="White"></Entry>
             <Entry x:Name="LastNameEntry" Placeholder="Last Name" Margin="10" BackgroundColor="White"></Entry>
-            <Entry x:Name="AddressEntry" Placeholder="Address" Margin="10" BackgroundColor="White"></Entry>
-            <Entry x:Name="CityEntry" Placeholder="City" Margin="10" BackgroundColor="White"></Entry>
-            <Entry x:Name="StateEntry" Placeholder="State" Margin="10" BackgroundColor="White"></Entry>
-            <Entry x:Name="ZipEntry" Placeholder="Zip" Margin="10" BackgroundColor="White"></Entry>
             <Button x:Name="JoinButton" Text="Join" HorizontalOptions="Center" VerticalOptions="End" Clicked="JoinButton_OnClicked" BackgroundColor="White"></Button>
         </StackLayout>
     </ContentPage.Content>
